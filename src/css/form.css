@@ -28,18 +28,19 @@ form input {
 
   width: 100%;
 
-  color: white;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #b5b5b5;
   text-transform: uppercase;
-  outline: unset
+
+  caret-color: #565353;
+
+  transition: 0.2s background-color ease;
 }
 
 form input:focus {
-  transition: 0.2s all ease;
-  background-color: #212020;
-  outline: 1.5px solid #7b7878;
-  letter-spacing: 0.5px;
-
-  font-weight: 600;
+  background-color: #181717;
+  outline: 1.5px solid #424141;
 }
 
 form .flex {
@@ -70,9 +71,10 @@ form button {
   line-height: 1.7rem;
   color: #121212;
 
-  transition: filter 0.3s;
+  transition: 0.3s all ease;
 }
 
 form button:hover {
   filter: brightness(1.2);
+  box-shadow: 0 0 2rem 1rem #8062ec27;
 }

@@ -10,13 +10,15 @@ function setCardType(type) {
   const colors = {
     "visa": ["#436D99", "#2D57F2"],
     "mastercard": ["#C69347", "#DF6F29"],
-    "default": ["black", "gray"],
+    "default": ["#24242a", "#0009"],
   };
 
   ccBgColor01.setAttribute('fill', colors[type][0]);
   ccBgColor02.setAttribute('fill', colors[type][1]);
   ccLogo.setAttribute("src", `cc-${type}.svg`);
 };
+
+setCardType("default");
 
 globalThis.setCardType = setCardType;
 
@@ -49,12 +51,12 @@ const cardNumberPattern = {
   mask: [
     {
       mask: "0000 0000 0000 0000",
-      regex:/^4\d{0,15}/, 
+      regex: /^4\d{0,15}/, 
       cardtype: "visa",
     },
     {
       mask: "0000 0000 0000 0000",
-      regex:/(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
+      regex: /(^5[1-5]\d{0,2}|^22[2-9]\d|^2[3-7]\d{0,2})\d{0,12}/,
       cardtype: "mastercard",
     },
     {
@@ -75,10 +77,15 @@ const cardNumberMasked = IMask(cardNumber, cardNumberPattern);
 
 const addButton = document.querySelector("#add-card");
 addButton.addEventListener("click", () => {
-  alert("Cartão adicionado!");
+  if (cardNumber.value == "" || cardHolder.value == '' || expirationDate.value == '' || securityCode.value == '') {
+    alert("[ERRO] Faltam preencher dados!");
+  } else {
+    alert("Seu cartão foi adicionado!");
+    location.reload();
+  }
 });
 
-document.querySelector("form").addEventListener('submit', (event) => {
+document.querySelector("form").addEventListener('submit', event => {
   event.preventDefault();
 });
 
@@ -86,7 +93,7 @@ const cardHolder = document.querySelector('#card-holder');
 cardHolder.addEventListener('input', () => {
   const ccHolder = document.querySelector('.cc-holder .value');
 
-  ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value;
+  ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO" : cardHolder.value;
 });
 
 securityCodeMasked.on("accept", () => {
@@ -117,5 +124,61 @@ expirationDateMasked.on('accept', () => {
 
 function updateExpirationDate(date) {
   const ccExpiration = document.querySelector(".cc-extra .value");
-  ccExpiration.innerText = date.length === 0 ? "02/32" : date;
 };
+  ccExpiration.innerText = date.length === 0 ? "02/32" : date;
+
+/* Fala Devs! 
+
+
+
+Venho aqui para agradecer aos gigantes Mayk Brito, Rodrigo Gonçalves Santana e Jakeliny Gracielly pelo grande evento da Rocketseat (Explorer Lab).
+
+
+
+Nas aulas, foram abordados assuntos como Expressões Regulares, manipulação do DOM, e até trabalhado com alguns Frameworks.
+
+
+
+O intuito do evento era demonstrar princípios de manipulação da DOM, com JavaScript.
+
+
+
+Link do Deploy: https://rocketpay-indol.vercel.app/
+
+Link do Repositório: https://github.com/cristian-sbardelotto/rocketpay
+
+#javascript #dom #explorerlab #html #css 
+
+
+
+-------------------------------------------------------------------------------------
+634 / 5.000
+Resultados de tradução
+Speak Devs!
+
+
+
+I come here to thank the giants Mayk Brito, Rodrigo Gonçalves Santana and Jakeliny Gracielly for the great event at Rocketseat (Explorer Lab).
+
+
+
+In the classes, subjects such as Regular Expressions, DOM manipulation, and even worked with some Frameworks were addressed.
+
+
+
+The purpose of the event was to demonstrate principles of DOM manipulation, with JavaScript.
+
+
+
+Deploy link: https://rocketpay-indol.vercel.app/
+
+Repository Link: https://github.com/cristian-sbardelotto/rocketpay
+
+#javascript #dom #explorerlab #html #css
+
+
+
+-------------------------------------------------- -----------------------------------
+Mais sobre o texto originalÉ necessário fornecer o texto original para ver mais informações sobre a tradução
+Enviar feedback
+Painéis laterais */
