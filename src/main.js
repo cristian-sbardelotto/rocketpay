@@ -124,8 +124,9 @@ expirationDateMasked.on('accept', () => {
 
 function updateExpirationDate(date) {
   const ccExpiration = document.querySelector(".cc-extra .value");
-};
+
   ccExpiration.innerText = date.length === 0 ? "02/32" : date;
+};
 
 /* Fala Devs! 
 
@@ -152,9 +153,8 @@ Link do Repositório: https://github.com/cristian-sbardelotto/rocketpay
 
 
 -------------------------------------------------------------------------------------
-634 / 5.000
-Resultados de tradução
-Speak Devs!
+
+Hey Devs!
 
 
 
@@ -175,10 +175,4 @@ Deploy link: https://rocketpay-indol.vercel.app/
 Repository Link: https://github.com/cristian-sbardelotto/rocketpay
 
 #javascript #dom #explorerlab #html #css
-
-
-
--------------------------------------------------- -----------------------------------
-Mais sobre o texto originalÉ necessário fornecer o texto original para ver mais informações sobre a tradução
-Enviar feedback
-Painéis laterais */
+*/
